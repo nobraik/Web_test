@@ -1,6 +1,7 @@
 package Steps;
 
 
+import Evedencia.Evidencias;
 import elementos.Elementos;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,6 +13,7 @@ import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class Steps {
+    Evidencias evidencias = new Evidencias();
 Metodos metodos = new Metodos();
 Elementos el = new Elementos();
 JavaUploudPictures_Achives jup = new JavaUploudPictures_Achives();
@@ -21,6 +23,7 @@ JavaUploudPictures_Achives jup = new JavaUploudPictures_Achives();
     }
     @When("eu preecher os dados requeridos")
     public void euPreecherOsDadosRequeridos() throws AWTException, InterruptedException {
+
         metodos.selecionaMarca("Audi");
         metodos.SelecionarModelo("Scooter");
         metodos.escrever("2000",el.capacity);
@@ -35,6 +38,8 @@ JavaUploudPictures_Achives jup = new JavaUploudPictures_Achives();
         metodos.escrever("23000",el.ListaPreco);
         metodos.escrever("34",el.licenseplatenumber);
         metodos.escrever("120.000",el.anualmilleager);
+
+        evidencias.evidencias("tirando fotos para evidenciar o passo");
 
         metodos.click(el.nextClick);
 
@@ -51,6 +56,8 @@ JavaUploudPictures_Achives jup = new JavaUploudPictures_Achives();
         metodos.escrever("www.gooo.com",el.website);
         metodos.click(el.botao_open);
 
+        evidencias.evidencias("tirando fotos para evidencia 2 passo");
+
         jup.uploadArquivo();
 
         metodos.click(el.Procimo);
@@ -61,6 +68,7 @@ JavaUploudPictures_Achives jup = new JavaUploudPictures_Achives();
         metodos.DamagerIsurance("Full Coverage");
         metodos.click(el.opcionalProducts);
         metodos.courcestcar("No");
+        evidencias.evidencias("tirando fotos para evidenciar o 3 passo");
         metodos.click(el.Butaonest3);
 
         metodos.click(el.selectPrideOption);
@@ -80,14 +88,18 @@ JavaUploudPictures_Achives jup = new JavaUploudPictures_Achives();
         metodos.escrever(" Q1q2q3q4 ",el.confirPassword);
 
         metodos.escrever(" Olá eu sou o jarvis e estou controlando este site para teste do meu senho nobraik ",el.comentarios);
-
+        evidencias.evidencias("tirando fotos para evidenciar o 4 passo");
     }
     @When("clico em proximo")
     public void clicoEmProximo() {
+
         metodos.click(el.buttonSendFinal);
     }
     @Then("sou direcionado para preecher dados pessoais")
-    public void souDirecionadoParaPreecherDadosPessoais() {
+    public void souDirecionadoParaPreecherDadosPessoais() throws InterruptedException {
+        evidencias.evidencias("tirando fotos para evidenciar o 5 passo");
+  metodos.Encerrar();
+
 
     }
 

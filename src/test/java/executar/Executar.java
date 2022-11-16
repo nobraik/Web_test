@@ -11,6 +11,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
@@ -30,29 +31,37 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Executar extends DriversFactory {
 
 
-@BeforeClass
-   public static void iniciarTest(){
+    @BeforeClass
+    public static void iniciarTest() {
 
-String navegador = "chrome";
-String urlSite = "http://sampleapp.tricentis.com/101/app.php";
+        String navegador = "chrome";
+        String urlSite = "http://sampleapp.tricentis.com/101/app.php";
+
+
+        if (navegador.equalsIgnoreCase("chrome")) {
+
+            System.out.println(" voce esta abrindo o " + navegador);
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+
+        } else if (navegador.equalsIgnoreCase("Firefox")) {
+            System.out.println(" voce esta abrindo o " + navegador);
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+            driver.manage().window().maximize();
+
+
+        } else if (navegador.equals("edge")) {
+            WebDriverManager.edgedriver().setup();
+            driver=new EdgeDriver();
+            driver.manage().window().maximize();
+        }
+        driver.get(urlSite);
+            }
+
+        }
 
 
 
- if (navegador.equalsIgnoreCase("chrome")){
 
-     System.out.println(" voce esta abrindo o "+navegador);
-     WebDriverManager.chromedriver().setup();
-     driver = new ChromeDriver();
-     driver.manage().window().maximize();
-
- } else if (navegador.equalsIgnoreCase("Firefox")) {
-     System.out.println(" voce esta abrindo o "+navegador);
-     WebDriverManager.firefoxdriver().setup();
-     driver = new FirefoxDriver();
-     driver.manage().window().maximize();
- }
-
- driver.get(urlSite);
-   }
-
-}

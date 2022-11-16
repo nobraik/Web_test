@@ -1,14 +1,16 @@
 package metodos;
 
 import drivers_web.DriversFactory;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 
 public class Metodos extends DriversFactory {
@@ -45,9 +47,10 @@ public class Metodos extends DriversFactory {
         driver.findElement(By.xpath("//select//option[@value='" + texto + "']")).click();
 
     }
+
     public void SelecionaQtoAcentos2(String texto) {
-        driver.findElement(By.xpath("(//select//option[@value='"+texto+"'])[2]")).click();
-}
+        driver.findElement(By.xpath("(//select//option[@value='" + texto + "'])[2]")).click();
+    }
 
     public void Ocupacao(String texto) {
 
@@ -74,28 +77,45 @@ public class Metodos extends DriversFactory {
         driver.findElement(By.xpath("//select//option[@value='" + texto + "']")).click();
     }
 
-public void aguardarMethod(By elemento){
-    WebElement waitElement = new WebDriverWait(driver, Duration.ofSeconds(50000))
-            .until(ExpectedConditions.elementToBeClickable(elemento));
-    waitElement.click();
+    public void aguardarMethod(By elemento) {
+        WebElement waitElement = new WebDriverWait(driver, Duration.ofSeconds(50000))
+                .until(ExpectedConditions.elementToBeClickable(elemento));
+        waitElement.click();
 
-}
-public void aguardaDominhoco() throws InterruptedException {
-       Thread.sleep(50000);
+    }
 
-
-}
-//metodo para descer a tela
-public void  Scroll(int n1,int n2 ){
-    JavascriptExecutor jsScroll = (JavascriptExecutor) driver;
-      jsScroll.executeScript("window.scrollBy("+n1+","+n2+")");
+    public void aguardaDominhoco() throws InterruptedException {
+        Thread.sleep(50000);
 
 
-}
-public void validar(){
-  ///testando update de merge
+    }
+
+    //metodo para descer a tela
+    public void Scroll(int n1, int n2) {
+        JavascriptExecutor jsScroll = (JavascriptExecutor) driver;
+        jsScroll.executeScript("window.scrollBy(" + n1 + "," + n2 + ")");
 
 
-}
+    }
 
+    public void validar() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(6);
+        driver.findElement(By.cssSelector("body > div.sweet-alert.showSweetAlert.visible > h2")).getText();
+        System.out.println("texto capturado");
+
+
+
+    }
+
+
+    public void Encerrar() {
+        try {
+            TimeUnit.SECONDS.sleep(9);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.quit();
+
+
+   }
 }
