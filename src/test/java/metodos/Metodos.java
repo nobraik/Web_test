@@ -85,10 +85,17 @@ public void aguardaDominhoco() throws InterruptedException {
 
 
 }
+//metodo para descer a tela
 public void  Scroll(int n1,int n2 ){
     JavascriptExecutor jsScroll = (JavascriptExecutor) driver;
       jsScroll.executeScript("window.scrollBy("+n1+","+n2+")");
 
-      
+
 }
+public void validar(){
+  ///testando update de merge
+
+
+}
+
 }
